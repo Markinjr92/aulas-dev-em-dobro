@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atletas JF Imperadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/scrollbar.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <img src="./src/imagens/logo-jf-imperadores.png" alt="logo-jf-imperadores" class="logo">
+        </a>
+        <a class="titulo">Atletas</a>
+        <button id="botao-alterar-tema">
+            <img src="./src/imagens/coroa-jf-imperadores.png" alt="coroa-jf-imperadores" class="imagem-botao">
+        </button>
+    </header>
+    <main id="card">
+        <ul id="atletas" class="listagem-atleta">
+            <li class="cartao-atleta">
+                <div id="apelidoNumero" class="informacoes">
+                    <span id="nome ">Markin</span> 
+                    <span id="numero">#12</span>
+                </div>
+                <img id="imagem" src="./src/imagens/logo-jf-imperadores.png" alt="Markin" class="img">
+
+                <ul class="tipos">
+                    <li id="grupo" class="tipo ataque">Ataque</li>
+                    <li id="posicao" class="tipo ataque">WR</li>
+                </ul>
+                <p id="curiosidade" class="descricao">Atleta e presidente da equipe.</p>
+            </li>
+        </ul>
+    </main>
+
+</body>
+
+<script>
+    function getAtletas(){
+        const options = {method: 'GET'};
+        fetch('https://sheetdb.io/api/v1/y2gi6wi3k0wbl', options)
+          .then(response => response.json())
+          .then(response => console.log(response))
+          .catch(err => console.error(err));
+    }
+    
+    function createCard () {
+        card = 
+          `<ul class="listagem-atleta">
+                  <li class="cartao-atleta">
+                      <div id="apelidoNumero" class="informacoes">
+                          <span id="nome ">${response.apelido}</span> 
+                          <span id="numero">Nº ${response.numero}</span>
+                      </div>
+                      <img id="imagem" src="${response.imagem}">
+                  
+                      <ul class="tipos">
+                          <li id="grupo" class="tipo ${response.grupo}">${response.grupo}</li>
+                          <li id="posicao" class="tipo ${response.grupo}">${response.posicao}</li>
+                      </ul>
+                      <p id="curiosidade" class="descricao">${response.curiosidade}</p>
+                  </li>
+              </ul>`
+          ;
+        return card;
+    }
+    
+    function getArray () {
+        let response = [
+    {
+        "numero": "1",
+        "nome_completo": "Alex Ferrara Sobreira",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Alex",
+        "curiosidade": "Atleta novo acabou de entrar por seletiva",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "2",
+        "nome_completo": "Leonardo Israel",
+        "grupo": "Ataque",
+        "posicao": "WR",
+        "apelido": "Israel",
+        "curiosidade": "Atleta que já jogou como LB em times do Sul",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "3",
+        "nome_completo": "RUDSON DOURADO LIPPI",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Rudson",
+        "curiosidade": "Atleta do extinto JF Mamutes, jogava como WR e agora sendo LB",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "5",
+        "nome_completo": "Rodrigo Gollner Perrin",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Gollner",
+        "curiosidade": "Atleta sendo um dos destaques de 2022, atua como LB e DB",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "7",
+        "nome_completo": "Victor Araújo Franzone Vital",
+        "grupo": "Ataque",
+        "posicao": "WR",
+        "apelido": "Franzone",
+        "curiosidade": "WR destaque em 2022, boas corridas e o homem mais lindo do FABR",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "8",
+        "nome_completo": "RAPHAEL NEPOMUCENO DE MENEZES",
+        "grupo": "Ataque",
+        "posicao": "QB",
+        "apelido": "Menezes",
+        "curiosidade": "Experiente, já jogou pelo antigo Antares, Tritões, extinto Mamutes, joga desde a época das praias de Vila Velha",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "9",
+        "nome_completo": "Daniel Baumgratz Nobre",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Nobre",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "12",
+        "nome_completo": "MARCOS ANTÔNIO NOGUEIRA JUNIOR",
+        "grupo": "Ataque",
+        "posicao": "WR",
+        "apelido": "Markin",
+        "curiosidade": "Presidente da equipe, em 2022 atuou como QB do time.",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "14",
+        "nome_completo": "Mario Hugo",
+        "grupo": "Ataque",
+        "posicao": "WR",
+        "apelido": "MH",
+        "curiosidade": "Atleta voltando de lesão, importante em jogadas específicas no Brasileirão D2",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "15",
+        "nome_completo": "Mateus Quirino dos Santos",
+        "grupo": "Ataque",
+        "posicao": "RB",
+        "apelido": "Quirino",
+        "curiosidade": "Atleta da cidade de São João Nepomunceno",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "19",
+        "nome_completo": "Matheus de Melo Rocha",
+        "grupo": "Ataque",
+        "posicao": "QB",
+        "apelido": "Matheus",
+        "curiosidade": "Atleta com muito comprometimento ainda novo",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "20",
+        "nome_completo": "Arthur Dal Sasso Pessoa",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Arthur",
+        "curiosidade": "Desde a época do extinto RedFox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "21",
+        "nome_completo": "Luiz Felipe Cantarino Adriano",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Lamparina",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "22",
+        "nome_completo": "Vanderson Silva",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Vanderson",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "23",
+        "nome_completo": "Pedro Almeida De Oliveira",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Pedro",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "24",
+        "nome_completo": "Luismar sombra bastos junior",
+        "grupo": "Ataque",
+        "posicao": "FB",
+        "apelido": "Sombra",
+        "curiosidade": "Atleta destaque em 2023, uma das chaves do time, atleta com bons bloqueios e que ainda recebe bem a bola. Ex atleta do extindo RedFox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "27",
+        "nome_completo": "IGOR CESAR CALMON BRITTO",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Calmon",
+        "curiosidade": "Atleta do antigo Matias Barbosa Primatas",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "30",
+        "nome_completo": "Caio Henrique Moraes Pimentel",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Caio",
+        "curiosidade": "Atleta que foi da base de jovens do extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "32",
+        "nome_completo": "Luiz Carlos Victorino de Souza Junior",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Victorino",
+        "curiosidade": "Experiente e jogou no Tubarão do Cerrado",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "37",
+        "nome_completo": "Leandro dos Santos de Almeida",
+        "grupo": "Ataque",
+        "posicao": "RB",
+        "apelido": "Leandro",
+        "curiosidade": "RB Novato, nunca teve contato do o fa, mas já apresenta um bom desempenho",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "41",
+        "nome_completo": "Erick Xavier de Oliveira",
+        "grupo": "Ataque",
+        "posicao": "RB",
+        "apelido": "Erick",
+        "curiosidade": "Atleta que surgiu na base do extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "42",
+        "nome_completo": "Camilo José dos Santos Soares",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "CJ",
+        "curiosidade": "DL experiente, passagens pelo Galo e Saints de SP",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "43",
+        "nome_completo": "VINÍCIUS GOMES TAVARES",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Tavares",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "45",
+        "nome_completo": "Bruno de Melo Godinho",
+        "grupo": "Ataque",
+        "posicao": "RB",
+        "apelido": "Godinho",
+        "curiosidade": "RB destaque em 2022 no Brasileiro e Mineiro, está na equipe desde 2023",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "49",
+        "nome_completo": "Wallafy Aparecido de Andrade",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Wallafy",
+        "curiosidade": "Atleta que jogou no extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "53",
+        "nome_completo": "Daniel Pereira da Silva Lopes",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Daniel",
+        "curiosidade": "DL rápido e explosivo, voltando de lesão não jogou o Brasileiro 2022",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "55",
+        "nome_completo": "Anderson da Silva Rosa",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Anditaum",
+        "curiosidade": "Atleta desde extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "67",
+        "nome_completo": "Bernardo Scher Baumgratz de Paula",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Bernardão",
+        "curiosidade": "OL experiente desde a época do extinto RedFox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "69",
+        "nome_completo": "Delvoux Antonio Cordeiro",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Delvoux",
+        "curiosidade": "Center experiente, jogador do antigo Bicas Maquinistas",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "71",
+        "nome_completo": "Alex Gomes da Silva",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Alex",
+        "curiosidade": "OL experiente desde a época do extinto RedFox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "72",
+        "nome_completo": "Carlos Alexandre da Silva",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Carlos",
+        "curiosidade": "DL de uma cidade vizinha de JF, antigo atleta do Matias Primatas",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "73",
+        "nome_completo": "Fabiano Bispo Canedo",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Bispo",
+        "curiosidade": "OL novato mas muito comprometido",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "74",
+        "nome_completo": "Gabriel Quinet Michels",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Michels",
+        "curiosidade": "OL experiente, com passagens pelo Flamengo, era do extinto JF Redfox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "76",
+        "nome_completo": "Caio Medeiros Vieira",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Gol Bolinha",
+        "curiosidade": "OL destaque desde 2019, jogou pelo Bulldogs do Sul",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "77",
+        "nome_completo": "Sidney Poitier Passos",
+        "grupo": "Ataque",
+        "posicao": "OL",
+        "apelido": "Sidão",
+        "curiosidade": "OL experiente, jogava no extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "79",
+        "nome_completo": "Wallace De Mattos Oliveira",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Wallace",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "81",
+        "nome_completo": "Pablo de Matos Apolinário Costa",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Pablo",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "83",
+        "nome_completo": "Thiago Teixeira de Castro",
+        "grupo": "Defesa",
+        "posicao": "DB",
+        "apelido": "Thiagão",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "84",
+        "nome_completo": "Alexsander da Silva Corrêa",
+        "grupo": "Ataque",
+        "posicao": "WR",
+        "apelido": "Soy Jo",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "85",
+        "nome_completo": "LUCAS EDUARDO DA SILVA",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Lucas",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "87",
+        "nome_completo": "Diego da Costa chagas",
+        "grupo": "ST",
+        "posicao": "K",
+        "apelido": "Chagas",
+        "curiosidade": "Kicker que se machucou na final da D2 em 2022, voltando de lesão séria com rompimento completo do ligamento do tornozelo",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "88",
+        "nome_completo": "SANTIAGO DIRCON MOREIRA",
+        "grupo": "Ataque",
+        "posicao": "TE",
+        "apelido": "Santiago",
+        "curiosidade": "TE que jogava no extindo RedFox",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "90",
+        "nome_completo": "Bryan Diego Evaristo da Nova",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Bryan",
+        "curiosidade": "LB destque em 2023, já jogou pelo Bulldogs do Sul",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "91",
+        "nome_completo": "Carlos Henrique Honório Fortunato",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Karuroshi",
+        "curiosidade": "DL experiente, joga desde o extinto JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "92",
+        "nome_completo": "Raphael dos Santos de Andrade",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Raphael",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "93",
+        "nome_completo": "Bernardo Simeone Amaro da Silva",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Sapateiro",
+        "curiosidade": "Atleta com 1 ano só de time, destque do Brasileiro",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "94",
+        "nome_completo": "Guilherme Medeiros",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Latrel",
+        "curiosidade": "Atleta experiente, jogava no extindo JF Mamutes",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "95",
+        "nome_completo": "Rafael Ferreira Krepker",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Krepker",
+        "curiosidade": "Atleta que já treinou no Galo",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "97",
+        "nome_completo": "Pablo Felipe Pereira Laurindo",
+        "grupo": "Defesa",
+        "posicao": "LB",
+        "apelido": "Pablo",
+        "curiosidade": "Atleta que jogou em 2017 como DL agora retornando como LB",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "98",
+        "nome_completo": "WENDERSON JOSÉ JANCINTHO PEREIRA DA SILVA",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Wenderson",
+        "curiosidade": "-",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    },
+    {
+        "numero": "99",
+        "nome_completo": "Rafael Simões da Silveira Neiva",
+        "grupo": "Defesa",
+        "posicao": "DL",
+        "apelido": "Simões",
+        "curiosidade": "DL destaque em 2022, eleito MVP da Defesa",
+        "imagem": "./src/imagens/logo-jf-imperadores.png"
+    }
+];
+    }
+
+
+    
+
+
+
+    
+
+</script>
+
+</html>

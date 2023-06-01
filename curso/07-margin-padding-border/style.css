@@ -1,0 +1,12 @@
+p{
+    margin: 30px 15px 10px 20px;
+    padding: 20px 10px;
+    background-color: greenyellow;
+    border-style: solid;
+    border-color:cadetblue;
+    border-width: 30px;
+}
+
+h1{
+    border: 15px solid blueviolet;
+}
